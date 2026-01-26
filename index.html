@@ -73,48 +73,37 @@
 <body>
 
   <div class="container">
-
-    <h1>BABA DO KBÇA – <i>para desopilar!</i></h1>
-    <hr>
-
-    <h2>Capa da Semana – Time Laranja – 21/01/2026</h2>
-
-    <!-- IMAGEM CLICÁVEL (ABRE COMPLETA NO CELULAR) -->
-    <a href="capadasemana.jpeg" target="_blank">
-      <img src="capadasemana.jpeg"
-           alt="Capa da Semana"
-           loading="lazy">
-    </a>
-
-    <p style="text-align:center;">
-      <b>Jogos todas as quartas-feiras</b><br>
-      <mark><strong>19:00 às 20:30</strong></mark>
-    </p>
-
-    <hr>
-
-    <p>
-      <b>Valor por atleta:</b> <mark>R$ 10,00</mark><br>
-      <b>PIX:</b> <mark>74988182530</mark> – Fabrício Fagner
-    </p>
-
-    <p>
-      <a href="https://nubank.com.br/cobrar/jn02b/6977f464-5163-40b2-b4cf-9c7233673301" target="_blank">
+    <header>
+      <hgroup>
+        <h1>BABA DO KBÇA – <i>para desopilar!</i></h1>
+        <hr>
+        <h2>Capa da Semana – Time Laranja – 21/01/2026</h2>
+        <!-- IMAGEM CLICÁVEL (ABRE COMPLETA NO CELULAR) -->
+        <img src="_baba/capadasemana.jpeg" width="480" height="250"/>
+        <p style="text-align:center;">
+          <b>Jogos todas as quartas-feiras</b><br>
+          <mark><strong>19:00 às 20:30</strong></mark>
+        </p>
+        <hr>
+        <p>
+          <b>Valor por atleta:</b> <mark>R$ 10,00</mark><br>
+          <b>PIX:</b> <mark>74988182530</mark> – Fabrício Fagner
+        </p>
+        <p>
+          <a href="https://nubank.com.br/cobrar/jn02b/6977f464-5163-40b2-b4cf-9c7233673301" target="_blank">
         Clique aqui para efetuar o pagamento!
-      </a>
-    </p>
-
-    <hr>
-
-    <div style="text-align:center;">
-      <input type="text" id="nome" placeholder="Digite seu nome"
+          </a>
+        </p>
+        <hr>
+        <div style="text-align:center;">
+          <input type="text" id="nome" placeholder="Digite seu nome"
              onkeypress="if(event.key==='Enter'){adicionar()}">
-      <button onclick="adicionar()">Enviar</button>
-    </div>
-
-    <h3>Lista de Jogadores:</h3>
-    <ol id="lista"></ol>
-
+          <button onclick="adicionar()">Enviar</button>
+        </div>
+        <h3>Lista de Jogadores:</h3>
+        <ol id="lista"></ol>
+      </hgroup>
+    </header>
   </div>
 
 <script>
