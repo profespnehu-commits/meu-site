@@ -2,7 +2,8 @@
 <html lang="pt-br">
 <head>
   <meta charset="UTF-8">
-  <title>Tudo Sobre o Baba - KBÇA</title>
+  <title>Baba do KBÇA</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <style>
     body {
@@ -10,191 +11,119 @@
       background-color: #2E7D32;
       color: white;
       font-family: Arial, sans-serif;
-    }
-
-    .container {
-      max-width: 900px;
-      margin: auto;
-      padding: 15px;
+      padding: 20px;
     }
 
     h1, h2, h3 {
       text-align: center;
     }
 
-    img {
-      width: 100%;
-      max-width: 100%;
-      height: auto;
-      display: block;
-      margin: 15px auto;
-      border-radius: 6px;
+    input {
+      padding: 8px;
+      width: 70%;
+      max-width: 300px;
     }
 
     button {
       background-color: #FFEB3B;
       border: none;
-      padding: 6px 10px;
+      padding: 8px 12px;
       cursor: pointer;
       font-weight: bold;
-      margin-left: 8px;
       border-radius: 4px;
+      margin-left: 5px;
     }
 
     button:hover {
       background-color: #FDD835;
     }
 
-    input {
-      padding: 6px;
-      width: 70%;
-      max-width: 300px;
-    }
-
-    a {
-      color: #FFEB3B;
-      font-weight: bold;
-      text-decoration: none;
-    }
-
-    a:hover {
-      text-decoration: underline;
-    }
-
     ol li {
-      margin-bottom: 6px;
+      margin-bottom: 8px;
     }
   </style>
 </head>
 
-<body style="padding: 20px;">
+<body>
 
-  <div id="interface"/>
-    <header id="cabecalho"/>
-    <hgroup>
+<h1>BABA DO KBÇA – <i>para desopilar!</i></h1>
 
-    <h1>BABA DO KBÇA – <i>para desopilar!</i></h1>
-    <img src="brasão.jpg" style="width:50%; max-width: 160px; height:auto;" alt="Brasão do Baba">
-    <hr>
+<div style="text-align:center;">
+  <input type="text" id="nome" placeholder="Digite seu nome"
+         onkeypress="if(event.key==='Enter'){adicionar()}">
+  <button onclick="adicionar()">Enviar</button>
+</div>
 
-    <h2>Capa da Semana – Time Laranja – 21/01/2026</h2>
+<h3>Lista de Jogadores</h3>
+<ol id="lista"></ol>
 
-    <img src="capadasemana1.jpeg" alt="Capa da Semana">
+<!-- 🔥 FIREBASE -->
+<script type="module">
+  // 🔹 IMPORTAÇÕES DO FIREBASE
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
+  import { 
+    getFirestore, 
+    collection, 
+    addDoc, 
+    deleteDoc, 
+    doc, 
+    onSnapshot 
+  } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
 
-    <p style="text-align:center;">
-      <b>Jogos todas as quartas-feiras</b><br>
-      <strong>19:00 às 20:30</strong>
-    </p>
+  // 🔹 CONFIGURAÇÃO DO FIREBASE (SUBSTITUA PELOS SEUS DADOS)
+  const firebaseConfig = {
+    apiKey: "SUA_API_KEY",
+    authDomain: "SEU_PROJETO.firebaseapp.com",
+    projectId: "SEU_PROJETO",
+    storageBucket: "SEU_PROJETO.appspot.com",
+    messagingSenderId: "SEU_ID",
+    appId: "SEU_APP_ID"
+  };
 
-    <hr>
+  // 🔹 INICIALIZA
+  const app = initializeApp(firebaseConfig);
+  const db = getFirestore(app);
+  const inscritosRef = collection(db, "inscritos");
 
-    <p align="center">
-      <br>Valor por atleta:<b>R$ 10,00</b><br>
-      <br>Chave PIX:<b> 74988182530</b> – Fabrício Fagner
-    </p><br>
-
-    <p align="center"><br>
-      <a href="https://nubank.com.br/cobrar/jn02b/6977f464-5163-40b2-b4cf-9c7233673301" target="_blank">
-        Clique aqui para efetuar o pagamento!<br>
-      </a></b><br>
-    </p>
-    </hgroup>
-    </header>
-  </div>
-
-    <div style="text-align:center;">
-      <input type="text" id="nome" placeholder="Digite seu nome"
-             onkeypress="if(event.key==='Enter'){adicionar()}">
-      <button onclick="adicionar()">Enviar</button>
-    </div>
-
-    <h3>Lista de Jogadores:</h3>
-    <h4><b><i>Para o dia 28.01.2026!</i></b></h4>
-    <ol id="lista"></ol><br>
-  
-  <hr>
-  
-  <h3> Inadimplentes: </h3><br>
-
-  <hr>
-
-<script>
-  let inscritos = JSON.parse(localStorage.getItem("inscritos")) || [];
-
-  function salvar() {
-    localStorage.setItem("inscritos", JSON.stringify(inscritos));
-  }
-
-  function mostrar() {
-    let lista = document.getElementById("lista");
+  // 🔹 MOSTRAR LISTA EM TEMPO REAL
+  onSnapshot(inscritosRef, (snapshot) => {
+    const lista = document.getElementById("lista");
     lista.innerHTML = "";
 
-    inscritos.forEach((nome, index) => {
-      let item = document.createElement("li");
-      item.innerHTML = `${nome}
-        <button onclick="remover(${index})">Excluir</button>`;
-      lista.appendChild(item);
+    snapshot.forEach((docItem) => {
+      const li = document.createElement("li");
+      li.innerHTML = `
+        ${docItem.data().nome}
+        <button onclick="remover('${docItem.id}')">Excluir</button>
+      `;
+      lista.appendChild(li);
     });
-  }
+  });
 
-  function adicionar() {
-    let nomeInput = document.getElementById("nome");
-    let nome = nomeInput.value.trim();
+  // 🔹 ADICIONAR NOME
+  window.adicionar = async function () {
+    const input = document.getElementById("nome");
+    const nome = input.value.trim();
 
     if (nome === "") {
       alert("Digite um nome válido!");
       return;
     }
 
-    if (inscritos.includes(nome)) {
-      alert("Esse nome já está na lista!");
-      return;
-    }
+    await addDoc(inscritosRef, { nome });
+    input.value = "";
+  };
 
-    inscritos.push(nome);
-    salvar();
-    mostrar();
-    nomeInput.value = "";
-  }
-
-  function remover(index) {
-    let senha = prompt("Digite a senha do administrador:");
+  // 🔹 REMOVER (COM SENHA)
+  window.remover = async function (id) {
+    const senha = prompt("Digite a senha do administrador:");
     if (senha === "admin123") {
-      inscritos.splice(index, 1);
-      salvar();
-      mostrar();
+      await deleteDoc(doc(db, "inscritos", id));
     } else {
       alert("Senha incorreta!");
     }
-  }
-
-  mostrar();
+  };
 </script>
-<div>
-  <header>
-  <hgroup>
-    <h5><strong> Criador do site:</strong></h5>
-    <img src="autor.jpeg" style="width: 30%; max-width: 100px; height: auto; margin: 0;" alt="Autor">
-    <style>
-      p{
-        font-family: Arial;
-        font-size: 10pt;
-      }
-    </style>
-    <p><b>Prof. Jauahallau-Nehu E. C. da Silva</b><br>
-      Extensão Universitária Matemática @ufg<br>
-      Técnico em Segurança Pública @acides-pe<br>
-      Acadêmico em Engenharia Civil @ifsertaope<br>
-      Graduado no Curso Superior de Tecnologia em Seguraça Pública @uniasselvi<br>
-      Graduado no Curso Superior de Licenciatura em Física @ifsertaope<br>
-      Pós-graduado (Lato Sensu) Especialista em Educação @univasf<br>
-      Pós-graduando (Stricto Sensu) Mestrando em Ensino @ppgens_univasf</p>
-    <p>Endereço para acessar este CV:
-      <a href="http://lattes.cnpq.br/7937554732309732"> 
-        http://lattes.cnpq.br/7937554732309732</a><br>
-        ID Lattes: 7937554732309732</p>
-  </hgroup>
-  </header>
-</div>
+
 </body>
 </html>
