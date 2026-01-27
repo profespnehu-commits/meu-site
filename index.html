@@ -119,24 +119,18 @@
   <hr>
 
 <script type="module">
-  // ===============================
-  // 🔥 IMPORTAÇÕES DO FIREBASE
-  // ===============================
   import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
   import {
     getFirestore,
     collection,
     addDoc,
     deleteDoc,
+    doc,
     onSnapshot,
     query,
     orderBy
   } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
 
-  // ===============================
-  // 🔧 CONFIGURAÇÃO DO FIREBASE
-  // 👉 SUBSTITUA PELOS SEUS DADOS
-  // ===============================
   const firebaseConfig = {
     apiKey: "SUA_API_KEY",
     authDomain: "SEU_PROJETO.firebaseapp.com",
@@ -146,22 +140,15 @@
     appId: "SEU_APP_ID"
   };
 
-  // ===============================
-  // 🚀 INICIALIZAÇÃO
-  // ===============================
   const app = initializeApp(firebaseConfig);
   const db = getFirestore(app);
   const inscritosRef = collection(db, "inscritos");
 
-  // ===============================
-  // 👀 MOSTRAR LISTA EM TEMPO REAL
-  // ===============================
   const q = query(inscritosRef, orderBy("timestamp"));
 
   onSnapshot(q, (snapshot) => {
     const lista = document.getElementById("lista");
     lista.innerHTML = "";
-
     snapshot.forEach((docItem) => {
       const li = document.createElement("li");
       li.innerHTML = `
@@ -172,29 +159,17 @@
     });
   });
 
-  // ===============================
-  // ➕ ADICIONAR NOME
-  // ===============================
   window.adicionar = async function () {
     const nomeInput = document.getElementById("nome");
     const nome = nomeInput.value.trim();
-
-    if (nome === "") {
-      alert("Digite um nome válido!");
-      return;
-    }
-
+    if (nome === "") return alert("Digite um nome válido!");
     await addDoc(inscritosRef, {
       nome: nome,
       timestamp: Date.now()
     });
-
     nomeInput.value = "";
   };
 
-  // ===============================
-  // ❌ REMOVER (COM SENHA)
-  // ===============================
   window.remover = async function (id) {
     const senha = prompt("Digite a senha do administrador:");
     if (senha === "admin123") {
@@ -203,7 +178,7 @@
       alert("Senha incorreta!");
     }
   };
-  
+
 </script>
 <div>
   <header>
