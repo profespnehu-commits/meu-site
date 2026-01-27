@@ -1,121 +1,174 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
-  <meta charset="UTF-8"/>
-  <title>Tudo sobre o Baba - KBÇA</title>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="author" content="Prof. Nehu">
+  <title>Tudo Sobre o Baba do KBÇA</title>
 
   <style>
-    body{
-      background-color: black;
+    body {
       margin: 0;
+      background-color: #2E7D32;
+      color: white;
       font-family: Arial, sans-serif;
     }
 
-    h1{
-      font-size: 40pt;
-      color: black;
-      text-shadow: 3px 3px 3px white;
+    .container {
+      max-width: 900px;
+      margin: auto;
+      padding: 15px;
+    }
+
+    h1, h2, h3 {
       text-align: center;
     }
 
-    h2{
-      font-size: 19pt;
-      color: white;
-      text-shadow: 1px 1px 4px black;
-      text-align: center;
-    }
-
-    h3, h4, h5, h6, p, li, a{
-      color: white;
-      font-family: "Times New Roman";
-    }
-
-    img{
-      border: 4px solid white;
+    img {
+      width: 100%;
       max-width: 100%;
       height: auto;
+      display: block;
+      margin: 15px auto;
+      border-radius: 6px;
     }
 
-    video, audio{
-      max-width: 100%;
+    button {
+      background-color: #FFEB3B;
+      border: none;
+      padding: 6px 10px;
+      cursor: pointer;
+      font-weight: bold;
+      margin-left: 8px;
+      border-radius: 4px;
     }
 
-    .center{
-      text-align: center;
+    button:hover {
+      background-color: #FDD835;
+    }
+
+    input {
+      padding: 6px;
+      width: 70%;
+      max-width: 300px;
+    }
+
+    a {
+      color: #FFEB3B;
+      font-weight: bold;
+      text-decoration: none;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+
+    ol li {
+      margin-bottom: 6px;
     }
   </style>
 </head>
 
 <body>
 
-<div id="interface">
+  <div class="container">
 
-  <header>
-    <h1>Baba do KBÇA</h1>
-    <h2><i>Venha desopilar!</i></h2>
+    <h1>BABA DO KBÇA – <i>para desopilar!</i></h1>
     <hr>
 
-    <h3 class="center">Capa da Semana - Time Laranja - 21/01/2026</h3>
+    <h2>Capa da Semana – Time Laranja – 21/01/2026</h2>
 
-    <div class="center">
-      <img src="_baba/meu-site-main/_imagens/capadasemana1.jpg" alt="Capa da semana">
+    <!-- IMAGEM CLICÁVEL (ABRE COMPLETA NO CELULAR) -->
+    <a href="capadasemana.jpeg" target="_blank">
+      <img src="capadasemana.jpeg"
+           alt="Capa da Semana"
+           loading="lazy">
+    </a>
+
+    <p style="text-align:center;">
+      <b>Jogos todas as quartas-feiras</b><br>
+      <mark><strong>19:00 às 20:30</strong></mark>
+    </p>
+
+    <hr>
+
+    <p>
+      <b>Valor por atleta:</b> <mark>R$ 10,00</mark><br>
+      <b>PIX:</b> <mark>74988182530</mark> – Fabrício Fagner
+    </p>
+
+    <p>
+      <a href="https://00020126360014br.gov.bcb.pix0114+55749881825305204000053039865802BR5925FABRICIO FAGNER PEREIRA D6009Sao Paulo62290525REC6977EE4C2AFB11777354016304F968" target="_blank">
+        Clique aqui para efetuar o pagamento!
+      </a>
+    </p>
+
+    <hr>
+
+    <div style="text-align:center;">
+      <input type="text" id="nome" placeholder="Digite seu nome"
+             onkeypress="if(event.key==='Enter'){adicionar()}">
+      <button onclick="adicionar()">Enviar</button>
     </div>
 
-    <p class="center">
-      Jogos todas as quartas – <strong>19:00 às 20:30</strong>
-    </p>
-  </header>
+    <h3>Lista de Jogadores:</h3>
+    <ol id="lista"></ol>
 
-  <hr>
-
-  <nav>
-    <p>Valor por atleta: R$ 10,00</p>
-    <p>Pix: 74988182530 – Fabrício Fagner</p>
-    <p>Ou pague <a href="#">clicando aqui</a></p>
-
-    <h4>Lista de Jogadores:</h4>
-    <p><mark>Próximo baba - 28/01/26</mark></p>
-
-    <ol>
-      <li>Jogador</li>
-    </ol>
-  </nav>
-
-</div>
-
-<hr>
-
-<div id="tv-radio">
-
-  <h5 class="center">Áudio destaque do baba:</h5>
-  <div class="center">
-    <audio controls>
-      <source src="_baba/meu-site-main/_audios/hino-do-botafogo-baixe-net.mp3" type="audio/mpeg">
-      Seu navegador não suporta áudio.
-    </audio>
   </div>
 
-  <h5 class="center">Vídeo destaque do baba:</h5>
-  <div class="center">
-    <video width="250" height="500" controls>
-      <source src="_baba/meu-site-main/_videos/goleiroxgoleiro.mp4" type="video/mp4">
-      Seu navegador não suporta vídeo.
-    </video>
-  </div>
+<script>
+  let inscritos = JSON.parse(localStorage.getItem("inscritos")) || [];
 
-  <hr>
+  function salvar() {
+    localStorage.setItem("inscritos", JSON.stringify(inscritos));
+  }
 
-  <h6>Criador e Redator:</h6>
-  <p>
-    <b>Prof. Jauahallau-Nehu E. C. da Silva</b><br>
-    Acadêmico em Engenharia Civil – IF Sertão-PE<br>
-    Tecnólogo em Segurança Pública – UNIASSELVI<br>
-    Licenciado em Física – IF Sertão-PE<br>
-    Especialista em Educação – UNIVASF<br>
-    Mestrando em Ensino – PPGEns/UNIVASF
-  </p>
+  function mostrar() {
+    let lista = document.getElementById("lista");
+    lista.innerHTML = "";
 
-</div>
+    inscritos.forEach((nome, index) => {
+      let item = document.createElement("li");
+      item.innerHTML = `${nome}
+        <button onclick="remover(${index})">Excluir</button>`;
+      lista.appendChild(item);
+    });
+  }
+
+  function adicionar() {
+    let nomeInput = document.getElementById("nome");
+    let nome = nomeInput.value.trim();
+
+    if (nome === "") {
+      alert("Digite um nome válido!");
+      return;
+    }
+
+    if (inscritos.includes(nome)) {
+      alert("Esse nome já está na lista!");
+      return;
+    }
+
+    inscritos.push(nome);
+    salvar();
+    mostrar();
+    nomeInput.value = "";
+  }
+
+  function remover(index) {
+    let senha = prompt("Digite a senha do administrador:");
+    if (senha === "admin123") {
+      inscritos.splice(index, 1);
+      salvar();
+      mostrar();
+    } else {
+      alert("Senha incorreta!");
+    }
+  }
+
+  mostrar();
+</script>
 
 </body>
 </html>
