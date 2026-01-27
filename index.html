@@ -65,7 +65,7 @@
       </hgroup>
       <hr>
       <center><h3>Capa da Semana - Time Laranja - 21/01/2026</h3></center>
-      <center><img src="_IMAGENS/capadasemana.jpg" width="370" height="200"></center>
+      <center><img src="_IMAGENS/capadasemana1.jpg" width="370" height="200"></center>
       <center><p>Jogos todas as quartas - <strong>Horário: 19:00 às 20:30</strong></p></center><br>
       </header>
       <hr>
@@ -85,13 +85,13 @@
         <h5>Audio destaque do baba:</h5>
       </center>
       <center><audio id="Whats" controls="controls">
-        <source src="_audios/hino-do-botafogo-baixe-net.mp3" type="audio/mpeg"/>
+        <source src="_baba/hino-do-botafogo-baixe-net.mp3" type="audio/mpeg"/>
       </audio></center>
       <center><br>
         <h5>Video destaque do baba:</h5>
       </center>
       <center><video id="Jogo" width="250" height="500" controls="controls">
-        <source src="_VIDEOS/goleiroxgoleiro.mp4" type="video/mp4">
+        <source src="_baba/goleiroxgoleiro.mp4" type="video/mp4">
       </video></center><br>
       <hr>
       <hgroup>
@@ -104,59 +104,5 @@
         Pós-graduando (Stricto Sensu) Mestrando em Ensino @ppgens_univasf</p>
       </hgroup>
     </div>
-
-<script>
-  let inscritos = JSON.parse(localStorage.getItem("inscritos")) || [];
-
-  function salvar() {
-    localStorage.setItem("inscritos", JSON.stringify(inscritos));
-  }
-
-  function mostrar() {
-    let lista = document.getElementById("lista");
-    lista.innerHTML = "";
-
-    inscritos.forEach((nome, index) => {
-      let item = document.createElement("li");
-      item.innerHTML = `${nome}
-        <button onclick="remover(${index})">Excluir</button>`;
-      lista.appendChild(item);
-    });
-  }
-
-  function adicionar() {
-    let nomeInput = document.getElementById("nome");
-    let nome = nomeInput.value.trim();
-
-    if (nome === "") {
-      alert("Digite um nome válido!");
-      return;
-    }
-
-    if (inscritos.includes(nome)) {
-      alert("Esse nome já está na lista!");
-      return;
-    }
-
-    inscritos.push(nome);
-    salvar();
-    mostrar();
-    nomeInput.value = "";
-  }
-
-  function remover(index) {
-    let senha = prompt("Digite a senha do administrador:");
-    if (senha === "admin123") {
-      inscritos.splice(index, 1);
-      salvar();
-      mostrar();
-    } else {
-      alert("Senha incorreta!");
-    }
-  }
-
-  mostrar();
-</script>
-
 </body>
 </html>
