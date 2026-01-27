@@ -119,7 +119,10 @@
   <hr>
 
 <script type="module">
-  import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
+  // 🔥 Firebase App
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/12.8.0/firebase-app.js";
+
+  // 🔥 Firestore (BANCO DE DADOS)
   import {
     getFirestore,
     collection,
@@ -129,26 +132,32 @@
     onSnapshot,
     query,
     orderBy
-  } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
+  } from "https://www.gstatic.com/firebasejs/12.8.0/firebase-firestore.js";
 
+  // 🔧 CONFIGURAÇÃO DO SEU PROJETO (ESSA PARTE JÁ ESTÁ CERTA)
   const firebaseConfig = {
-    apiKey: "SUA_API_KEY",
-    authDomain: "SEU_PROJETO.firebaseapp.com",
-    projectId: "SEU_PROJETO",
-    storageBucket: "SEU_PROJETO.appspot.com",
-    messagingSenderId: "SEU_ID",
-    appId: "SEU_APP_ID"
+    apiKey: "AIzaSyAO7XYw-T-DB695phUjTqQE6KT-Gz8ZwQU",
+    authDomain: "banco-de-dados-do-site-7a058.firebaseapp.com",
+    projectId: "banco-de-dados-do-site-7a058",
+    storageBucket: "banco-de-dados-do-site-7a058.firebasestorage.app",
+    messagingSenderId: "52701318665",
+    appId: "1:52701318665:web:b50401d8ce880c325972d8",
+    measurementId: "G-8Y2D89K75D"
   };
 
+  // 🚀 Inicializa Firebase
   const app = initializeApp(firebaseConfig);
   const db = getFirestore(app);
-  const inscritosRef = collection(db, "inscritos");
 
+  // 📂 Referência da coleção
+  const inscritosRef = collection(db, "inscritos");
   const q = query(inscritosRef, orderBy("timestamp"));
 
+  // 👀 LISTA EM TEMPO REAL
   onSnapshot(q, (snapshot) => {
     const lista = document.getElementById("lista");
     lista.innerHTML = "";
+
     snapshot.forEach((docItem) => {
       const li = document.createElement("li");
       li.innerHTML = `
@@ -159,17 +168,25 @@
     });
   });
 
+  // ➕ ADICIONAR NOME
   window.adicionar = async function () {
-    const nomeInput = document.getElementById("nome");
-    const nome = nomeInput.value.trim();
-    if (nome === "") return alert("Digite um nome válido!");
+    const input = document.getElementById("nome");
+    const nome = input.value.trim();
+
+    if (nome === "") {
+      alert("Digite um nome válido!");
+      return;
+    }
+
     await addDoc(inscritosRef, {
       nome: nome,
       timestamp: Date.now()
     });
-    nomeInput.value = "";
+
+    input.value = "";
   };
 
+  // ❌ REMOVER (COM SENHA)
   window.remover = async function (id) {
     const senha = prompt("Digite a senha do administrador:");
     if (senha === "admin123") {
@@ -178,8 +195,8 @@
       alert("Senha incorreta!");
     }
   };
-
 </script>
+
 <div>
   <header>
   <hgroup>
