@@ -1,108 +1,121 @@
 <!DOCTYPE html>
 <html lang="pt-br">
-  <head>
-    <meta charset="UFT-8"/>
-    <title>Tudo sobre o Baba - KBÇA</title>
-    <style>
-      h1{
-        font-family: Arial;
-        font-size: 40pt;
-        color: black;
-        text-shadow: 3px 3px 3px white;
-      }
-      h2{
-        font-family: Times New Roman;
-        font-size: 19pt;
-        color: white;
-        text-shadow: 1px 1px 4px black;
-      }
-      h3{
-        font-family: Times New Roman;
-        font-size: 16pt;
-        color: white;
-      }
-      h4{
-        font-family: Times New Roman;
-        font-size: 14pt;
-        color: white;
-      }
-      p{
-        font-family: Times New Roman;
-        font-size: 10pt;
-        color: white;
-      }
-      img{
-        border: 4px solid white;
-      }
-      li{
-        font-family: Times New Roman;
-        font-size:12pt;
-        color: white;
-      }
-      a{
-        font-family: Arial;
-        font-size: 12pt;
-        color: white;
-      }
-      h5{
-        font-family: Times New Roman;
-        font-size: 10;
-        color: white;
-      }
-      h6{
-        font-family: Times New Roman;
-        font-size: 10pt;
-        color: white;
-      }
-    </style>
-  </head>
-<body bgcolor="black">
-    <div id="interface">
-      <header id="cabecalho">
-      <hgroup>
-      <center><h1>Baba do KBÇA</h1></center>
-      <center><h2><i>Venha desopilar!</i></h2></center><br>
-      </hgroup>
-      <hr>
-      <center><h3>Capa da Semana - Time Laranja - 21/01/2026</h3></center>
-      <center><img src="_imagens/capadasemana1.jpg" width="370" height="200"></center>
-      <center><p>Jogos todas as quartas - <strong>Horário: 19:00 às 20:30</strong></p></center><br>
-      </header>
-      <hr>
-      <nav>
-        <p>Valor por atleta: R$ 10,00</p>
-        <p>Pix: 74988182530 (copie e cole) - Fabrício Fagner</p>
-        <p> Ou pague <a href=""> clicando aqui!</a></p>
-        <h4>Lista de Jogadores:</h4>
-        <p><mark>Próximo baba - 28/01/26</mark></p>
-        <ol>
-          <li>Jogador</li>
-        </ol>
-      </nav>
-    </div><br><hr>
-    <div id="tv-radio">
-      <center>
-        <h5>Audio destaque do baba:</h5>
-      </center>
-      <center><audio id="Whats" controls="controls">
-        <source src="_audios/hino-do-botafogo-baixe-net.mp3" type="audio/mpeg"/>
-      </audio></center>
-      <center><br>
-        <h5>Video destaque do baba:</h5>
-      </center>
-      <center><video id="Jogo" width="250" height="500" controls="controls">
-        <source src="_videos/goleiroxgoleiro.mp4" type="video/mp4">
-      </video></center><br>
-      <hr>
-      <hgroup>
-        <h6>Criador e Redator:</h6>
-        <p><b>Prof. Jauahallau-Nehu E. C. da Silva</b><br>
-        Acadêmico em Engenheria Civil @ifsertaope<br>
-        Tecnólogo Superior em Seguraça Pública @uniasselvi<br>
-        Graduado no Curso de Licenciatura em Física @ifsertaope<br>
-        Pós-graduado (Lato Sensu) Especialista em Educação @univasf<br>
-        Pós-graduando (Stricto Sensu) Mestrando em Ensino @ppgens_univasf</p>
-      </hgroup>
+<head>
+  <meta charset="UTF-8"/>
+  <title>Tudo sobre o Baba - KBÇA</title>
+
+  <style>
+    body{
+      background-color: black;
+      margin: 0;
+      font-family: Arial, sans-serif;
+    }
+
+    h1{
+      font-size: 40pt;
+      color: black;
+      text-shadow: 3px 3px 3px white;
+      text-align: center;
+    }
+
+    h2{
+      font-size: 19pt;
+      color: white;
+      text-shadow: 1px 1px 4px black;
+      text-align: center;
+    }
+
+    h3, h4, h5, h6, p, li, a{
+      color: white;
+      font-family: "Times New Roman";
+    }
+
+    img{
+      border: 4px solid white;
+      max-width: 100%;
+      height: auto;
+    }
+
+    video, audio{
+      max-width: 100%;
+    }
+
+    .center{
+      text-align: center;
+    }
+  </style>
+</head>
+
+<body>
+
+<div id="interface">
+
+  <header>
+    <h1>Baba do KBÇA</h1>
+    <h2><i>Venha desopilar!</i></h2>
+    <hr>
+
+    <h3 class="center">Capa da Semana - Time Laranja - 21/01/2026</h3>
+
+    <div class="center">
+      <img src="_imagens/capadasemana1.jpg" alt="Capa da semana">
     </div>
+
+    <p class="center">
+      Jogos todas as quartas – <strong>19:00 às 20:30</strong>
+    </p>
+  </header>
+
+  <hr>
+
+  <nav>
+    <p>Valor por atleta: R$ 10,00</p>
+    <p>Pix: 74988182530 – Fabrício Fagner</p>
+    <p>Ou pague <a href="#">clicando aqui</a></p>
+
+    <h4>Lista de Jogadores:</h4>
+    <p><mark>Próximo baba - 28/01/26</mark></p>
+
+    <ol>
+      <li>Jogador</li>
+    </ol>
+  </nav>
+
+</div>
+
+<hr>
+
+<div id="tv-radio">
+
+  <h5 class="center">Áudio destaque do baba:</h5>
+  <div class="center">
+    <audio controls>
+      <source src="_audios/hino-do-botafogo-baixe-net.mp3" type="audio/mpeg">
+      Seu navegador não suporta áudio.
+    </audio>
+  </div>
+
+  <h5 class="center">Vídeo destaque do baba:</h5>
+  <div class="center">
+    <video width="250" height="500" controls>
+      <source src="_videos/goleiroxgoleiro.mp4" type="video/mp4">
+      Seu navegador não suporta vídeo.
+    </video>
+  </div>
+
+  <hr>
+
+  <h6>Criador e Redator:</h6>
+  <p>
+    <b>Prof. Jauahallau-Nehu E. C. da Silva</b><br>
+    Acadêmico em Engenharia Civil – IF Sertão-PE<br>
+    Tecnólogo em Segurança Pública – UNIASSELVI<br>
+    Licenciado em Física – IF Sertão-PE<br>
+    Especialista em Educação – UNIVASF<br>
+    Mestrando em Ensino – PPGEns/UNIVASF
+  </p>
+
+</div>
+
 </body>
 </html>
