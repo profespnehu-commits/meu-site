@@ -80,6 +80,45 @@
     }
     
   </style>
+  
+  <style>
+  .video-box{
+    max-width: 1000px;
+    margin: auto;
+  }
+
+  .videos-lado{
+    display: flex;
+    gap: 15px;
+    justify-content: center;
+    align-items: flex-start;
+    flex-wrap: nowrap; /* força ficar lado a lado */
+  }
+
+  .video-item{
+    width: 50%;
+    text-align: center;
+  }
+
+  .video-item video{
+    width: 100%;
+    height: 260px;
+    object-fit: cover;
+    border-radius: 12px;
+    border: 2px solid #fff;
+    display: block;
+  }
+
+  /* No celular quebra (fica um embaixo do outro) */
+  @media (max-width: 700px){
+    .videos-lado{
+      flex-wrap: wrap;
+    }
+    .video-item{
+      width: 100%;
+    }
+  }
+</style>
 
 </head>
 
@@ -177,21 +216,32 @@
     </header>
   </div><br>
   
-  <div class="video-box">
-    
-        <hgroup align="center">
-          
-          <h3>VIDEO DESTAQUE DA SEMANA: Os goleiros entraram em X1 e o goleiro "Cabeça" saiu na frente, defendeu. Padrão!</h3>
-          <video id="destaque1" controls="controls">
-            <source src="Goleiroxgoleiro.mp4">
-          </video>
-          <h3>VIDEO DESTAQUE DA SEMANA: Os goleiros entraram em X1 e o goleiro "Cabeça" saiu na frente, defendeu. Padrão!</h3>
-          <video id="destaque2" controls="controls">
-            <source src="defesadefalta.mp4">
-          </video>
-              
-        </hgroup>
+<div class="video-box">
+
+  <div class="videos-lado">
+
+    <div class="video-item">
+      <h3>VIDEO DESTAQUE DA SEMANA: Os goleiros entraram em X1 e o goleiro "Cabeça" saiu na frente, defendeu. Padrão!</h3>
+
+      <video id="destaque1" controls>
+        <source src="Goleiroxgoleiro.mp4" type="video/mp4">
+        Seu navegador não suporta vídeo.
+      </video>
+    </div>
+
+    <div class="video-item">
+      <h3>VIDEO DESTAQUE DA SEMANA: Os goleiros entraram em X1 e o goleiro "Cabeça" saiu na frente, defendeu. Padrão!</h3>
+
+      <video id="destaque2" controls>
+        <source src="defesadefalta.mp4" type="video/mp4">
+        Seu navegador não suporta vídeo.
+      </video>
+    </div>
+
   </div>
+
+</div>
+  
   <br>
   <hr>
   
