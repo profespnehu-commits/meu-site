@@ -170,14 +170,12 @@
         function verificar(){
           const p = document.getElementById("palavra").value;
           
-          if(p === "flamengo"){
+          if(p == "flamengo"){
             document.getElementById("resultado").innerHTML = "Você é Urubu de cabeça preta.";
-          } if(p === "vasco"){
+          } if(p == "vasco"){
             document.getElementById("resultado").innerHTML = "Você é Almirante, um navegador português.";
-          } if(p === "botafogo"){
+          } if(p == "botafogo"){
             document.getElementById("resultado").innerHTML = "Você é Manequinho, um grande biriba.";
-          } else {
-            document.getElementById("resultado").innerHTML = "Você é um Zé da bola.";
           }
         }
       
