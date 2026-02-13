@@ -153,38 +153,38 @@
         Tem áudios de resenha: zoação liberada e sem direito a apelação! 😂<br>
         E tem vídeos de destaques, pra ninguém dizer “foi sorte”! 🔥⚽</h3>
 
-      <div>
-        <header>
-          <hgroup>
-            
-            <h2 style="text-align: left;">Qual o seu time brasileiro:</h2>
-
-            <input type="text" id="palavra" placeholder="Ex: vasco, botafogo, palmeiras,...">
-            <button onclick="verificar()">Verificar</button>
-
-            <p id="resultado" style="font-family: Times New Roma; 
-              font-size: 15pt; 
-              text-shadow: 2px 2px 2px black;"></p>
-            
-            <script>
-              function verificar(){
-                const p = document.getElementById("palavra").value;
-
-                if(p === "flamengo"){
-                  document.getElementById("resultado").innerHTML = "Você é Urubu de cabeça preta.";
-                } if(p === "vasco"){
-                  document.getElementById("resultado").innerHTML = "Você é Almirante, um navegador português.";
-                } if(p === "botafogo"){
-                  document.getElementById("resultado").innerHTML = "Você é Manequinho, um grande biriba.";
-                } else {
-                  document.getElementById("resultado").innerHTML = "Você é um Zé da bola.";
-                }
-              }
-            </script>
+<div>
+  <header>
+    <hgroup>
+      
+      <h2 style="text-align: left;">Qual o seu time brasileiro:</h2>
+      
+      <input type="text" id="palavra" placeholder="Ex: vasco, botafogo, palmeiras,...">
+      <button onclick="verificar()">Verificar</button>
+      
+      <p id="resultado" style="font-family: Times New Roma; 
+        font-size: 15pt; 
+        text-shadow: 2px 2px 2px black;"></p>
+      
+      <script>
+        function verificar(){
+          const p = document.getElementById("palavra").value;
           
-          </hgroup>
-        </header>
-      </div>
+          if(p === "flamengo"){
+            document.getElementById("resultado").innerHTML = "Você é Urubu de cabeça preta.";
+          } if(p === "vasco"){
+            document.getElementById("resultado").innerHTML = "Você é Almirante, um navegador português.";
+          } if(p === "botafogo"){
+            document.getElementById("resultado").innerHTML = "Você é Manequinho, um grande biriba.";
+          } else {
+            document.getElementById("resultado").innerHTML = "Você é um Zé da bola.";
+          }
+        }
+      
+      </script>
+    </hgroup>
+  </header>
+</div>
     
       <img src="brasão.jpg" align="left" style="width:40%; max-width: 160px; height:auto;" alt="Brasão do Baba">
       <br><br><br><br><br><br><br><br>
