@@ -163,19 +163,21 @@
             <button onclick="verificar()">Verificar</button>
 
             <p id="resultado" style="font-family: Times New Roma; 
-              font-size: 10pt; 
+              font-size: 15pt; 
               text-shadow: 2px 2px 2px black;"></p>
             
             <script>
               function verificar(){
-                let p = document.getElementById("palavra").value;
+                const p = document.getElementById("palavra").value;
 
                 if(p == "flamengo"){
                   document.getElementById("resultado").innerHTML = "Você é Urubu de cabeça preta.";
                 }
+                
                 if(p == "vasco"){
                   document.getElementById("resultado").innerHTML = "Você é Almirante, um navegador português.";
                 }
+                
                 if(p == "botafogo"){
                   document.getElementById("resultado").innerHTML = "Você é Manequinho, um grande biriba.";
                 
