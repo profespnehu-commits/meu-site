@@ -130,12 +130,6 @@
 
 <body style="padding: 20px;">
 
-  <script>
-
-    <h2> Quiz do time: </h2>
-    
-  </script>
-
   <div id="interface"/>
     <header id="cabecalho"/>
     <hgroup>
@@ -158,6 +152,31 @@
         Aqui tem foto da capa pra registrar os heróis do dia.<br>
         Tem áudios de resenha: zoação liberada e sem direito a apelação! 😂<br>
         E tem vídeos de destaques, pra ninguém dizer “foi sorte”! 🔥⚽</h3>
+
+      <div>
+        <header>
+          <hgroup>
+            
+            <h2> Qual o seu time brasileiro:</h2>
+
+            <input type="text" id="palavra">
+            <button onclick="verificar()">Verificar</button>
+
+            <p id="resultado"></p>
+            
+            <script>
+              function verificar(){
+                let p = document.getElementById("palavra").value;
+
+                if(p == "flamengo"){
+                  document.getElementById("resultado").innerHTML = "Urubu de cabeça preta!";
+                }
+              }
+            </script>
+          
+          </hgroup>
+        </header>
+      </div>
     
       <img src="brasão.jpg" align="left" style="width:40%; max-width: 160px; height:auto;" alt="Brasão do Baba">
       <br><br><br><br><br><br><br><br>
