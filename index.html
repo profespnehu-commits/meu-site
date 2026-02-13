@@ -159,7 +159,7 @@
       
       <h2 style="text-align: left;">Qual o seu time brasileiro:</h2>
       
-      <input type="text" id="palavra" style="font-size: 15pt;" placeholder="Ex: vasco, botafogo, palmeiras,...">
+      <input type="text" id="palavra" style="font-size: 15pt;" placeholder="Ex: Vasco, Botafogo, Palmeiras,...">
       <button onclick="verificar()" style="color: yellow">Verificar</button>
       
       <p id="resultado" style="font-family: Times New Roma; 
@@ -170,14 +170,16 @@
         function verificar(){
           const p = document.getElementById("palavra").value;
           
-          if(p == "flamengo"){
+          if(p == "Flamengo"){
             document.getElementById("resultado").innerHTML = "Você é Urubu de cabeça preta.";
-          } else if(p == "vasco"){
+          } else if(p == "Vasco"){
             document.getElementById("resultado").innerHTML = "Você é Almirante, um navegador português.";
-          } else if(p == "botafogo"){
+          } else if(p == "Botafogo"){
             document.getElementById("resultado").innerHTML = "Você é Manequinho, um grande biriba.";
+          } else if (p == "Palmeiras"){
+            document.getElementById("resultado").innerHTML = "Você era um Periquito, hoje é um Porco Gobbato, .";
           } else{
-            document.getElementById("resultado").innerHTML = "Você é um Zé da bola."
+            document.getElementById("resultado").innerHTML = "Você é um Zé da bola.";
           }
         }
       
