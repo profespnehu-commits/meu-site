@@ -8,6 +8,7 @@
   <link rel="icon" type="image/jpg" href="brasão.jpg">
 
   <style>
+    
     body {
       margin: 0;
       background-image: url("background_portal4.png");
@@ -85,6 +86,19 @@
     button{
       font-size: 15pt;
     }
+
+    #bloco{
+      width: 50px;
+      height: 50px;
+      background-color: black;
+      position: relative;
+      animation: mover 3s infinite alternate;
+    }
+
+    @keyframes mover{
+      from{left: 0px;}
+      to{left: 300px}
+    }
     
   </style>
   
@@ -147,6 +161,8 @@
         </rgroup>
       </header>
     </div>
+
+    <div id="bloco"></div>
 
       <h3 style="text-align: right; font-family: Times New Roman; font-size: 20pt; color: yellow; text-shadow: 2px 2px 2px black;">
         Seja bem-vindo ao Portal Oficial - Baba do KBÇA! 😎<br>
